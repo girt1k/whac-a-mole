@@ -1,0 +1,65 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3cff00, #ae00ff);
+}
+
+.container{
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.board{
+    width: 450px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    border: solid 1px black;
+    background: #3ed73b2c;
+    background-image: url(img/mole-hidden.png);
+    background-size: cover;
+}
+
+#restart{
+    padding: 10px 20px;
+    color: white;
+    background-color: rebeccapurple;
+    border-color: black;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#restart:hover{
+    transform:  translateY(-2px);
+}
+
+.mole{
+    background-image: url(img/mole.png);
+    background-size: cover;
+}
+
+h2{
+    color: white;
+    font-weight: 600;
+    margin: 10px;
+    font-size: 2em;
+}
