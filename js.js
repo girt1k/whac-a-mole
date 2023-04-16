@@ -7,7 +7,7 @@ const scoreCounter = document.getElementById("score");
 let score = 0;
 let currentBox = 0;
 let isLocked =false;
-let currenttime = 10;
+let currenttime = 100;
 
 function showMole(){
     boxes.forEach ((box) => {
@@ -21,8 +21,8 @@ function showMole(){
 
 function start(){
     score = 0;
-    currenttime = 10;
-    moleTimer = setInterval(showMole, 300);
+    currenttime = 100;
+    moleTimer = setInterval(showMole, 700);
     timeTimer = setInterval(counntTime, 1000);
 }
 
