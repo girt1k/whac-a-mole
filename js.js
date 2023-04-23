@@ -9,6 +9,12 @@ let currentBox = 0;
 let isLocked =false;
 let currenttime = 100;
 
+lvl-hard.addEventListener("click", changeLevelToHard);
+
+lvl-medium.addEventListener("click", changeLevelToMedium);
+
+lvl-easy.addEventListener("click", changeLevelToEasy)
+
 function showMole(){
     boxes.forEach ((box) => {
         box.classList.remove("mole");
@@ -19,9 +25,21 @@ function showMole(){
     currentBox = randomBox.id;
 }
 
+function changeLevelToEasy(){
+     moleTimer = setInterval(showMole, 1000)
+};
+
+function changeLevelToMedium(){
+    moleTimer = setInterval(showMole, 500)
+};
+
+function changeLevelToHard(){
+    moleTimer = setInterval(showMole, 300)
+};
+
 function start(){
     score = 0;
-    currenttime = 100;
+    currenttime = playTime;
     moleTimer = setInterval(showMole, 700);
     timeTimer = setInterval(counntTime, 1000);
 }
