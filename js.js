@@ -1,55 +1,65 @@
 const boxes = document.querySelectorAll(".box");
-const mole =document.querySelector(".mole");
+const mole = document.querySelector(".mole");
 const restart = document.getElementById("restart");
 const timeCounter = document.getElementById("time");
 const scoreCounter = document.getElementById("score");
+const Text = document.querySelector("#intro");
+const radio = document.getElementsByName("difficulty");
+
 
 let score = 0;
 let currentBox = 0;
-let isLocked =false;
-let currenttime = 100;
+let isLocked = false;
+let currentTime = 10;
 
-lvl-hard.addEventListener("click", changeLevelToHard);
+let mTimer = 700;
 
-lvl-medium.addEventListener("click", changeLevelToMedium);
+radio.forEach((radio) => {
+    radio.addEventListener("click", () => {
+        if (radio.value == "1") {
+            mTimer = 1000;
+            return;
+        } else if (radio.value == "2") {
+            mTimer = 300;
+            return;
+        } else if (radio.value == "3") {
+            mTimer = 100;
+            return;
+        }
+    })
+})
 
-lvl-easy.addEventListener("click", changeLevelToEasy)
-
-function showMole(){
-    boxes.forEach ((box) => {
+function showMole() {
+    boxes.forEach((box) => {
         box.classList.remove("mole");
     });
     isLocked = false;
     let randomBox = boxes[Math.floor(Math.random() * 9)];
+
     randomBox.classList.add("mole");
+
     currentBox = randomBox.id;
 }
 
-function changeLevelToEasy(){
-     moleTimer = setInterval(showMole, 1000)
-};
-
-function changeLevelToMedium(){
-    moleTimer = setInterval(showMole, 500)
-};
-
-function changeLevelToHard(){
-    moleTimer = setInterval(showMole, 300)
-};
-
-function start(){
+function start() {
     score = 0;
-    currenttime = playTime;
-    moleTimer = setInterval(showMole, 700);
-    timeTimer = setInterval(counntTime, 1000);
+    currentTime = 10;
+    moleTimer = setInterval(showMole, mTimer);
+    timeTimer = setInterval(countTime, 1000);
+
+    Text.innerHTML = "Let's play!";
+    timeCounter.innerHTML = currentTime;
+    scoreCounter.innerHTML = score;
+
+    restart.innerHTML = "Restart!";
 }
 
-start();
+
 
 boxes.forEach((box) => {
-    box.addEventListener("click", () =>{
-        if(box.id == currentBox){
-            if(isLocked) return;
+    box.addEventListener("click", () => {
+        if (box.id == currentBox) {
+            if (isLocked) return;
 
             score++;
             scoreCounter.innerHTML = score;
@@ -59,21 +69,28 @@ boxes.forEach((box) => {
     });
 });
 
-function counntTime(){
-    currenttime--;
-    timeCounter.innerHTML = currenttime;
+function countTime() {
+    currentTime--;
+    timeCounter.innerHTML = currentTime;
 
-    if(currenttime == 0){
+    if (currentTime == 0) {
         clearInterval(timeTimer);
         clearInterval(moleTimer);
-        alert('GAME OVER! \n Твой счет: ' + score);
+        Text.innerHTML = `Your score: ${score}!`;
+        restart.innerHTML = "Restart!";
     }
 }
 
-function restartGame(){
+function restartGame() {
     clearInterval(timeTimer);
     clearInterval(moleTimer);
     start();
 }
 
-restart.addEventListener("click", restartGame);
+restart.addEventListener("click", () => {
+    if (restart.textContent === "Restart!") {
+        restartGame();
+    } else if (restart.textContent === "Start!") {
+        start();
+    }
+})
