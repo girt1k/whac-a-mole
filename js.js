@@ -5,14 +5,23 @@ const timeCounter = document.getElementById("time");
 const scoreCounter = document.getElementById("score");
 const Text = document.querySelector("#intro");
 const radio = document.getElementsByName("difficulty");
-
+const inputTime = document.getElementsById("input-time")
 
 let score = 0;
 let currentBox = 0;
 let isLocked = false;
-let currentTime = 10;
-
+let currentTime = 0;
 let mTimer = 700;
+let time = 0;
+alert("Игра может длится не больше 100 сек")
+
+if (inputTime != 0) {
+    time = 10
+} else if( inputTime > 100){
+    alert
+} else if( inputTime <= 100){
+    time = inputTime
+};
 
 radio.forEach((radio) => {
     radio.addEventListener("click", () => {
@@ -43,7 +52,7 @@ function showMole() {
 
 function start() {
     score = 0;
-    currentTime = 10;
+    currentTime = time;
     moleTimer = setInterval(showMole, mTimer);
     timeTimer = setInterval(countTime, 1000);
 
