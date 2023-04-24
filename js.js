@@ -5,7 +5,7 @@ const timeCounter = document.getElementById("time");
 const scoreCounter = document.getElementById("score");
 const Text = document.querySelector("#intro");
 const radio = document.getElementsByName("difficulty");
-const inputTime = document.getElementsById("input-time")
+const inputTime = document.getElementById("input-time")
 
 let score = 0;
 let currentBox = 0;
