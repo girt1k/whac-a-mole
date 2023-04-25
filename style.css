@@ -95,7 +95,7 @@ h2{
     color: #666;
 }
 
-#input_time{
+#UserTime{
     display: block;
     width: 215px;
     height: calc(2.25rem + 2px);
@@ -110,4 +110,5 @@ h2{
     border: 1px solid #bdbdbd;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin: 15px;
 }
